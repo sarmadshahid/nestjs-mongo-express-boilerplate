@@ -1,6 +1,5 @@
 import { CommonModule } from '@lib/common';
-import { DatabaseConnectionConfig } from '@lib/common/config/config.interface';
-import { ConfigService } from '@lib/common/config/config.service';
+import { MongooseConfigService } from '@lib/common/database/mongoose-config.service';
 import { User, UserSchema } from '@lib/common/schemas/user.schema';
 import { Logger, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -11,15 +10,7 @@ import { UsersService } from './users.service';
   imports: [
     CommonModule,
     MongooseModule.forRootAsync({
-      imports: [CommonModule],
-      useFactory: async (configService: ConfigService) => {
-        const databaseConfig = configService.get<DatabaseConnectionConfig>('database');
-        const connectionString = `mongodb://${databaseConfig.username}:${databaseConfig.password}@${databaseConfig.host}:${databaseConfig.port}/${databaseConfig.name}?authSource=admin`
-        return {
-          uri: connectionString
-        };
-      },
-      inject: [ConfigService]
+      useClass: MongooseConfigService
     }),
     MongooseModule.forFeature([
       { name: User.name, schema: UserSchema }
