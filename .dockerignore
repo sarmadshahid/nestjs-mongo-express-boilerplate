@@ -1,0 +1,7 @@
+node_modules/
+builds/
+README.md
+.vscode
+.husky
+package-lock.json
+logs/
