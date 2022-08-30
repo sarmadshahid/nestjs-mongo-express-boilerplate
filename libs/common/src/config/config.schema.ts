@@ -67,7 +67,7 @@ export const Schema: Convict.Schema<Config> = {
         title: {
           doc: 'users swagger title',
           format: String,
-          default: 'Simulator'
+          default: 'Users'
         },
         description: {
           doc: 'users swagger description',
