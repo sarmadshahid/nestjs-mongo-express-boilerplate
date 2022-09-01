@@ -6,10 +6,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint/eslint-plugin', 'import'],
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   root: true,
   env: {
     node: true,
@@ -54,8 +51,8 @@ module.exports = {
     // Disallow the use of debugger
     'no-debugger': 'off',
 
-    // Disallow unused variables
-    'no-unused-vars': 2,
+    // Allow unused variables
+    'no-unused-vars': 'off',
 
     // Removed rule "disallow mixed spaces and tabs for indentation" from recommended eslint rules
     'no-mixed-spaces-and-tabs': 'off',
