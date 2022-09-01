@@ -1,9 +1,13 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateUser {
-    @ApiProperty()
+    @ApiPropertyOptional({
+        type: String
+    })
     firstName?: string;
     
-    @ApiProperty()
+    @ApiPropertyOptional({
+        type: String
+    })
     secondName?: string;
 }

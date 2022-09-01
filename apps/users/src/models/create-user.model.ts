@@ -1,12 +1,25 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class CreateUser {
-    @ApiProperty()
+    @ApiProperty({
+        type: String,
+        description: 'This is a required property'
+    })
+    @IsNotEmpty()
     firstName: string;
 
-    @ApiProperty()
+    @ApiProperty({
+        type: String,
+        description: 'This is a required property'
+    })
+    @IsNotEmpty()
     secondName: string;
 
-    @ApiProperty()
+    @ApiProperty({
+        type: String,
+        description: 'This is a required property'
+    })
+    @IsEmail()
     email: string;
 }
