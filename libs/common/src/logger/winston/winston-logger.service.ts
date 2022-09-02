@@ -6,8 +6,10 @@ import {
   LoggerOptions,
   transports,
 } from 'winston';
+
 import { LoggingConfig } from '../../config/config.interface';
 import { ConfigService } from '../../config/config.service';
+
 import { WINSTON_MODULE_OPTIONS } from './winston-logger.constants';
 
 export class WinstonLoggerService implements LoggerService {
@@ -16,7 +18,7 @@ export class WinstonLoggerService implements LoggerService {
   constructor(
     @Inject(WINSTON_MODULE_OPTIONS)
     private readonly options: LoggerOptions,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
   ) {
     if (options && Object.values(options).length) {
       this.logger = createLogger(options);
@@ -29,16 +31,13 @@ export class WinstonLoggerService implements LoggerService {
             format: format.combine(
               format.timestamp(),
               format.colorize(),
-              format.simple()
-            )
+              format.simple(),
+            ),
           }),
-          new transports.File({ 
+          new transports.File({
             filename: `${loggingConfig.basePath}${loggingConfig.fileName}.log`,
-            format: format.combine(
-              format.timestamp(),
-              format.json(),
-            ) 
-          })
+            format: format.combine(format.timestamp(), format.json()),
+          }),
         ],
       });
     }
@@ -48,6 +47,7 @@ export class WinstonLoggerService implements LoggerService {
     this.context = context;
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public log(message: any, context?: string): any {
     context = context || this.context;
     if ('object' === typeof message) {
@@ -57,6 +57,7 @@ export class WinstonLoggerService implements LoggerService {
     return this.logger.info(message, { context });
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public error(message: any, trace?: string, context?: string): any {
     context = context || this.context;
 
@@ -84,6 +85,7 @@ export class WinstonLoggerService implements LoggerService {
     return this.logger.error(message, { context, stack: [trace] });
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public warn(message: any, context?: string): any {
     context = context || this.context;
 
@@ -96,6 +98,7 @@ export class WinstonLoggerService implements LoggerService {
     return this.logger.warn(message, { context });
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public debug?(message: any, context?: string): any {
     context = context || this.context;
 
@@ -108,6 +111,7 @@ export class WinstonLoggerService implements LoggerService {
     return this.logger.debug(message, { context });
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public verbose?(message: any, context?: string): any {
     context = context || this.context;
 
@@ -120,6 +124,7 @@ export class WinstonLoggerService implements LoggerService {
     return this.logger.verbose(message, { context });
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   private stringify(message: any): string {
     return typeof message === 'string'
       ? message

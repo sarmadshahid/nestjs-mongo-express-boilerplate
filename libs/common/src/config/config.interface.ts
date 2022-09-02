@@ -39,5 +39,4 @@ export interface DatabaseConnectionConfig {
   name: string;
 }
 
-export interface UsersMicroServiceConfig extends MicroServiceConfig {
-}
+export type UsersMicroServiceConfig = MicroServiceConfig;

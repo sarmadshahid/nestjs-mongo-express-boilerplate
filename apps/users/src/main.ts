@@ -3,6 +3,7 @@ import { ConfigService } from '@lib/common/config/config.service';
 import { LoggerService } from '@lib/common/logger/logger.service';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
 import { UsersModule } from './users.module';
 
 async function bootstrap() {
@@ -11,7 +12,8 @@ async function bootstrap() {
   const logger = app.get(LoggerService);
   app.useLogger(logger);
 
-  const microServicesConfig = configService.get<MicroServicesConfig>('microServices');
+  const microServicesConfig =
+    configService.get<MicroServicesConfig>('microServices');
 
   const { users } = microServicesConfig;
 

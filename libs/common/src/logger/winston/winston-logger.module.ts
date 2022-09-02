@@ -1,5 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { LoggerOptions } from 'winston';
+
 import { createWinstonProviders } from './winston-logger.provider';
 
 @Module({})

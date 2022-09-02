@@ -3,6 +3,7 @@ import { MongooseConfigService } from '@lib/common/database/mongoose-config.serv
 import { User, UserSchema } from '@lib/common/schemas/user.schema';
 import { Logger, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 
@@ -10,11 +11,9 @@ import { UsersService } from './users.service';
   imports: [
     CommonModule,
     MongooseModule.forRootAsync({
-      useClass: MongooseConfigService
+      useClass: MongooseConfigService,
     }),
-    MongooseModule.forFeature([
-      { name: User.name, schema: UserSchema }
-    ])
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   controllers: [UsersController],
   providers: [Logger, UsersService],
