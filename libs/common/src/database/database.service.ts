@@ -2,11 +2,12 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import { Generic } from '../models/generic.model';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 @Injectable()
 export class DatabaseService {
   constructor(private readonly logger: Logger) {}
 
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public async addItem<T extends Generic>(
     model: any,
     payload: any,
@@ -36,7 +37,6 @@ export class DatabaseService {
     return null;
   }
 
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public async getSingleItem<T extends Generic>(
     model: any,
     query: any,
@@ -66,7 +66,6 @@ export class DatabaseService {
     return null;
   }
 
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public async updateItem<T extends Generic>(
     model: any,
     query: any,
@@ -99,7 +98,6 @@ export class DatabaseService {
     return null;
   }
 
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public async deleteItem(model: any, query: any): Promise<boolean> {
     try {
       this.logger.log(
@@ -119,7 +117,6 @@ export class DatabaseService {
     return false;
   }
 
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public async isExists(model: any, query: any): Promise<boolean> {
     try {
       this.logger.log(
