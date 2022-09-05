@@ -3,15 +3,19 @@ import { ConfigService } from '@lib/common/config/config.service';
 import { LoggerService } from '@lib/common/logger/logger.service';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import helmet from 'helmet';
 
 import { UsersModule } from './users.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(UsersModule);
-  const configService = app.get(ConfigService);
+
+  app.use(helmet());
+
   const logger = app.get(LoggerService);
   app.useLogger(logger);
 
+  const configService = app.get(ConfigService);
   const microServicesConfig =
     configService.get<MicroServicesConfig>('microServices');
 
