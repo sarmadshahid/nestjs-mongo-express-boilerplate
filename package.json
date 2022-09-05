@@ -11,7 +11,7 @@
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start:users": "nest start users",
     "start:dev:users": "nest start users --watch",
-    "start:debug:users": "nest start users --debug --watch",
+    "start:debug:users": "nest start users --debug 0.0.0.0:9229 --watch",
     "start:prod": "node dist/main",
     "lint": "eslint . --ext .ts,.tsx --fix",
     "test": "jest",

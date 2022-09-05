@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}",
+            "name": "users debugger",
+            "port": 9229,
+            "remoteRoot": "/app",
+            "request": "attach",
+            "restart": true,
+            "trace": true,
+            "type": "node"
+        }
+    ]
+}
