@@ -5,13 +5,13 @@ import { createWinstonProviders } from './winston-logger.provider';
 
 @Module({})
 export class WinstonModule {
-  public static forRoot(options?: LoggerOptions): DynamicModule {
-    const providers = createWinstonProviders(options || {});
+    public static forRoot(options?: LoggerOptions): DynamicModule {
+        const providers = createWinstonProviders(options || {});
 
-    return {
-      module: WinstonModule,
-      providers: providers,
-      exports: providers,
-    };
-  }
+        return {
+            module: WinstonModule,
+            providers: providers,
+            exports: providers,
+        };
+    }
 }

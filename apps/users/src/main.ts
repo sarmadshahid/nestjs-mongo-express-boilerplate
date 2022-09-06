@@ -8,29 +8,29 @@ import helmet from 'helmet';
 import { UsersModule } from './users.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(UsersModule);
+    const app = await NestFactory.create(UsersModule);
 
-  app.use(helmet());
+    app.use(helmet());
 
-  const logger = app.get(LoggerService);
-  app.useLogger(logger);
+    const logger = app.get(LoggerService);
+    app.useLogger(logger);
 
-  const configService = app.get(ConfigService);
-  const microServicesConfig =
-    configService.get<MicroServicesConfig>('microServices');
+    const configService = app.get(ConfigService);
+    const microServicesConfig =
+        configService.get<MicroServicesConfig>('microServices');
 
-  const { users } = microServicesConfig;
+    const { users } = microServicesConfig;
 
-  if (users?.swagger?.enabled) {
-    const options = new DocumentBuilder()
-      .setTitle(users?.swagger?.title || '')
-      .setDescription(users?.swagger?.description || '')
-      .setVersion(users?.swagger?.version || '')
-      .build();
-    const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup(users?.swagger?.path, app, document);
-  }
-  logger.log(`Hey! I'm listening on port: ${users.port}`);
-  await app.listen(users.port);
+    if (users?.swagger?.enabled) {
+        const options = new DocumentBuilder()
+            .setTitle(users?.swagger?.title || '')
+            .setDescription(users?.swagger?.description || '')
+            .setVersion(users?.swagger?.version || '')
+            .build();
+        const document = SwaggerModule.createDocument(app, options);
+        SwaggerModule.setup(users?.swagger?.path, app, document);
+    }
+    logger.log(`Hey! I'm listening on port: ${users.port}`);
+    await app.listen(users.port);
 }
 bootstrap();

@@ -8,14 +8,14 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 
 @Module({
-  imports: [
-    CommonModule,
-    MongooseModule.forRootAsync({
-      useClass: MongooseConfigService,
-    }),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
-  ],
-  controllers: [UsersController],
-  providers: [Logger, UsersService],
+    imports: [
+        CommonModule,
+        MongooseModule.forRootAsync({
+            useClass: MongooseConfigService,
+        }),
+        MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    ],
+    controllers: [UsersController],
+    providers: [Logger, UsersService],
 })
 export class UsersModule {}

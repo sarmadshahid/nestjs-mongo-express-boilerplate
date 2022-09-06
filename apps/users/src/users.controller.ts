@@ -1,11 +1,11 @@
 import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Post,
+    Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -16,30 +16,30 @@ import { UsersService } from './users.service';
 @ApiTags('Users')
 @Controller()
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+    constructor(private readonly usersService: UsersService) {}
 
-  @Get()
-  getHello(): string {
-    return this.usersService.getHello();
-  }
+    @Get()
+    getHello(): string {
+        return this.usersService.getHello();
+    }
 
-  @Post('user')
-  async createUser(@Body() user: CreateUser) {
-    return await this.usersService.createUser(user);
-  }
+    @Post('user')
+    async createUser(@Body() user: CreateUser) {
+        return await this.usersService.createUser(user);
+    }
 
-  @Get('user/:email')
-  async getUser(@Param('email') email: string) {
-    return await this.usersService.getUser(email);
-  }
+    @Get('user/:email')
+    async getUser(@Param('email') email: string) {
+        return await this.usersService.getUser(email);
+    }
 
-  @Put('user/:email')
-  async updateUser(@Body() user: UpdateUser, @Param('email') email: string) {
-    return await this.usersService.updateUser(user, email);
-  }
+    @Put('user/:email')
+    async updateUser(@Body() user: UpdateUser, @Param('email') email: string) {
+        return await this.usersService.updateUser(user, email);
+    }
 
-  @Delete('user/:email')
-  async deleteUser(@Param('email') email: string) {
-    return await this.usersService.deleteUser(email);
-  }
+    @Delete('user/:email')
+    async deleteUser(@Param('email') email: string) {
+        return await this.usersService.deleteUser(email);
+    }
 }

@@ -9,19 +9,19 @@ import { LoggerModule } from './logger/logger.module';
 
 @Global()
 @Module({
-  providers: [
-    CommonService,
-    ConfigService,
-    DatabaseService,
-    Logger,
-    MongooseConfigService,
-  ],
-  exports: [
-    CommonService,
-    ConfigService,
-    DatabaseService,
-    MongooseConfigService,
-  ],
-  imports: [ConfigModule, LoggerModule],
+    providers: [
+        CommonService,
+        ConfigService,
+        DatabaseService,
+        Logger,
+        MongooseConfigService,
+    ],
+    exports: [
+        CommonService,
+        ConfigService,
+        DatabaseService,
+        MongooseConfigService,
+    ],
+    imports: [ConfigModule, LoggerModule],
 })
 export class CommonModule {}

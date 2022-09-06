@@ -7,22 +7,22 @@ import { Schema } from './config.schema';
 
 @Injectable()
 export class ConfigService {
-  config: Convict.Config<Config>;
+    config: Convict.Config<Config>;
 
-  constructor() {
-    this.config = Convict(Schema);
-    const dotEnvFile = dotenv.config().parsed;
-    if (dotEnvFile) {
-      this.config.load(dotenv.config().parsed);
+    constructor() {
+        this.config = Convict(Schema);
+        const dotEnvFile = dotenv.config().parsed;
+        if (dotEnvFile) {
+            this.config.load(dotenv.config().parsed);
+        }
+        this.config.validate({ allowed: 'warn' });
     }
-    this.config.validate({ allowed: 'warn' });
-  }
 
-  get<K>(configName: string) {
-    return this.config.get<K>(configName) as K;
-  }
+    get<K>(configName: string) {
+        return this.config.get<K>(configName) as K;
+    }
 
-  getBaseConfigObject() {
-    return this.config;
-  }
+    getBaseConfigObject() {
+        return this.config;
+    }
 }
