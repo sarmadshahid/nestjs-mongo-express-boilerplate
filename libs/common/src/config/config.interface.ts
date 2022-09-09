@@ -12,6 +12,7 @@ export interface LoggingConfig {
 
 export interface MicroServicesConfig {
     users: UsersMicroServiceConfig;
+    api: APIMicroServiceConfig;
 }
 
 export interface CorsConfig {
@@ -40,3 +41,5 @@ export interface DatabaseConnectionConfig {
 }
 
 export type UsersMicroServiceConfig = MicroServiceConfig;
+
+export type APIMicroServiceConfig = MicroServiceConfig;

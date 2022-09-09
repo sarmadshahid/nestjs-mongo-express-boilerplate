@@ -21,5 +21,20 @@ export class CreateUser {
         description: 'This is a required property',
     })
     @IsEmail()
+    @IsNotEmpty()
     email: string;
+
+    @ApiProperty({
+        type: String,
+        description: 'This is a required property',
+    })
+    @IsNotEmpty()
+    password: string;
+
+    @ApiProperty({
+        type: String,
+        description: 'This is a required property',
+    })
+    @IsNotEmpty()
+    confirmPassword: string;
 }

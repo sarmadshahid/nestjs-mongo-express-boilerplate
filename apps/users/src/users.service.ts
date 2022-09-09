@@ -13,17 +13,24 @@ export class UsersService {
         private readonly databaseService: DatabaseService,
         @InjectModel(User.name) private userModel: Model<UserDocument>,
     ) {}
+
     getHello(): string {
         return 'Hello world from users!';
     }
 
-    async createUser(user: CreateUser) {
+    async signUp(user: CreateUser) {
         const exists = await this.databaseService.isExists(this.userModel, {
             email: user.email,
         });
         if (exists) {
             throw new HttpException(
                 'User already present',
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+        if (user.password !== user.confirmPassword) {
+            throw new HttpException(
+                'Password do not match',
                 HttpStatus.BAD_REQUEST,
             );
         }

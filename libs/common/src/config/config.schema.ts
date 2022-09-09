@@ -86,6 +86,42 @@ export const Schema: Convict.Schema<Config> = {
                 },
             },
         },
+        api: {
+            port: {
+                doc: 'api port to bind',
+                format: 'port',
+                default: 3001,
+                env: 'API_SERVER_PORT',
+            },
+            swagger: {
+                enabled: {
+                    doc: 'api swagger enable',
+                    format: 'Boolean',
+                    default: true,
+                    env: 'API_SWAGGER_ENABLED',
+                },
+                title: {
+                    doc: 'api swagger title',
+                    format: String,
+                    default: 'API',
+                },
+                description: {
+                    doc: 'api swagger description',
+                    format: String,
+                    default: 'rest api endpoints for api',
+                },
+                version: {
+                    doc: 'api swagger version',
+                    format: String,
+                    default: '1.0',
+                },
+                path: {
+                    doc: 'api swagger url path',
+                    format: String,
+                    default: 'api',
+                },
+            },
+        },
     },
     cors: {
         enabled: {

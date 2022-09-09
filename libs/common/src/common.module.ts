@@ -1,5 +1,7 @@
 import { Global, Logger, Module } from '@nestjs/common';
 
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
 import { CommonService } from './common.service';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
@@ -10,6 +12,7 @@ import { LoggerModule } from './logger/logger.module';
 @Global()
 @Module({
     providers: [
+        AuthService,
         CommonService,
         ConfigService,
         DatabaseService,
@@ -17,11 +20,12 @@ import { LoggerModule } from './logger/logger.module';
         MongooseConfigService,
     ],
     exports: [
+        AuthService,
         CommonService,
         ConfigService,
         DatabaseService,
         MongooseConfigService,
     ],
-    imports: [ConfigModule, LoggerModule],
+    imports: [AuthModule, ConfigModule, LoggerModule],
 })
 export class CommonModule {}

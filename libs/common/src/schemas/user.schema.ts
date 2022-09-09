@@ -13,6 +13,9 @@ export class User {
 
     @Prop()
     email: string;
+
+    @Prop()
+    password: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
